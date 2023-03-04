@@ -1,0 +1,184 @@
+:root {
+    --green1: #54d964;
+    --green2: #2dd041;
+    --green3: #00a214;
+    --green3: #008010;
+    --light-blue: #3457dc;
+    --dark-blue: #2d4dc8;
+    /* background-color: var(--main-bg-color); */
+  }
+  * {
+    box-sizing: border-box;
+  }
+body {
+  background-color: #f3f3f3;
+}
+img#logo {
+  border-radius: 10em;
+}
+body {
+  margin: 0;
+}
+nav {
+  width: 100%;
+  font-family: "Signika Negative", sans-serif;
+  padding: 8px 10px;
+  font-size: 14pt;
+  box-shadow: 1px 1px 2px 2px rgb(172, 174, 179);
+  background-color: whitesmoke;
+  position: sticky;
+  z-index: 1;
+  top: 0;
+  margin-bottom: 20px;
+}
+nav > div {
+  position: absolute;
+  top: 20px;
+  left: 200px;
+  /* border: 1px solid black; */
+}
+
+div > li {
+  float: right;
+  list-style: none;
+  margin-top: 10px;
+  margin-left: 15px;
+  margin-right: 50px;
+}
+div > li:hover {
+  transform: scale(1.3);
+}
+nav > img {
+  width: 90px;
+  height: 75px;
+  border-radius: 10px;
+  box-shadow: 1px 1px 5px rgb(172, 174, 179);
+}
+div > li > a {
+  text-decoration: none;
+  padding: 20px 15px;
+  color: black;
+  text-shadow: 3px 3px 7px rgb(172, 174, 179);
+  overflow: hidden;
+}
+/* ------------ || -------------- */
+
+/* ------background section-------- */
+section#photo-sec {
+  width: 100%;
+  height: 500px;
+  position: relative;
+  top: 0;
+}
+section#photo-sec > img {
+  width: 100%;
+  height: 500px;
+}
+section#photo-sec > div {
+  position: absolute;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 10px 20px;
+  font-family: "Noto Sans Mono", monospace;
+}
+
+/* ------- customer Section --------- */
+h2 {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+section.customer {
+  width: 28%;
+  height: 1350px;
+  box-shadow: -5px 9px 57px 5px rgba(0,0,0,0.15);
+  background-color: white;
+  margin: 10px 10px 50px 40px;
+  border-radius: 0.75em;
+  position: relative;
+  left: 0%;
+  padding: 10px;
+  display: inline-block;
+}
+p{
+  font-size: 2.2vh;
+}
+.measurements {
+  width: 50%;
+  text-align: left;
+  font-size: 2.4vh;
+}
+
+/* Full-width input fields */
+input[type=text] {
+  width: 49%;
+  padding: 5px;
+  height: 2.5rem;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+  text-align: center;
+  position: relative;
+  right: 0;
+}
+/* Add a background color when the inputs get focus */
+input[type=text]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+.container{
+  display: flexbox;
+}
+input[type=submit]{
+  width: 100%;
+}
+input[type=submit]:hover {
+  background-color: var(--dark-blue);
+  color: white;
+}
+.btn {
+  float: right;
+  background-color: var(--light-blue);
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  width: 100px;
+  height: 40px;
+}
+.eye{
+  width: 24px;
+  height: 24px;
+  margin: 0 0 0 15px;
+}
+
+.container > div {
+  width: 400px;
+  line-height: 1.4em;
+}
+
+.app {
+    width: 60%;
+    height: 700px;
+    padding: 1.5rem;
+    background-color: white;
+    display: inline;
+    position: absolute;
+    margin: 15px 0 0 100px;
+    border: 1px solid black;
+    border-radius: 1rem;
+    box-shadow: -5px 9px 57px 5px rgba(0,0,0,0.26);
+}
+table.dataTable thead .sorting:after,
+table.dataTable thead .sorting:before,
+table.dataTable thead .sorting_asc:after,
+table.dataTable thead .sorting_asc:before,
+table.dataTable thead .sorting_asc_disabled:after,
+table.dataTable thead .sorting_asc_disabled:before,
+table.dataTable thead .sorting_desc:after,
+table.dataTable thead .sorting_desc:before,
+table.dataTable thead .sorting_desc_disabled:after,
+table.dataTable thead .sorting_desc_disabled:before {
+  bottom: .5em;
+}
