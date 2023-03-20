@@ -3,7 +3,12 @@ date_default_timezone_set('Asia/Yangon');
 // error_reporting(E_ALL & ~E_NOTICE);
 error_reporting(E_ALL ^ E_WARNING); 
 
-$connect = mysqli_connect("localhost","root","","ladylove");
+$server = "sql306.epizy.com";
+$username = "epiz_33837677";
+$password = "zarVto0LTLUUIgH";
+$dbname = "epiz_33837677_ladylove";
+
+$connect = mysqli_connect($server,$username,$password,$dbname);
 
 if (!$connect) 
 {
