@@ -12,7 +12,7 @@
     <!-- Datatable -->
     <link href="./vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
     <!-- CSS -->
-    <link rel="stylesheet" href="css/newstyle.css">    
+    <link rel="stylesheet" href="css/style.css">    
     <!--**********************************
         Scripts
     ***********************************-->
@@ -20,116 +20,21 @@
     <script src="./vendor/global/global.min.js"></script>
     <script src="./js/quixnav-init.js"></script>
     <script src="./js/custom.min.js"></script>
+    <script src="css/index.js"></script>
     <?php
    include('connect.php');
-    
-   if (isset($_POST['btncreate'])) {
-        $DateCreated = date('Y-m-d');
-        $CustomerName = $_POST['txtCustomerName'];
-        $Shoulder = $_POST['numShoulder'];
-        $SleeveDepth = $_POST['numSleeveDepth'];
-        $WaistLine = $_POST['numWaistLine'];
-        $HipLine = $_POST['numHipLine'];
-        $BackWidth = $_POST['numBackWidth'];
-        $FrontWidth = $_POST['numFrontWidth'];
-        $Bust = $_POST['numBust'];
-        $Waist = $_POST['numWaist'];
-        $Hip = $_POST['numHip'];
-        $BustLength = $_POST['numBustLength'];
-        $BustPoint = $_POST['numBustPoint'];
-        $Neck = $_POST['numNeck'];
-        $ArmHole = $_POST['numArmHole'];
-        $SleeveWidth = $_POST['txtSleeveWidth'];
-        $SleeveLength = $_POST['numSleeveLength'];
-        $PhoneNumber = $_POST['txtPhoneNumber'];
-        
-        $insert = "Insert into customer(CustomerName,Shoulder,SleeveDepth,WaistLine,HipLine,BackWidth,FrontWidth,Bust,Waist,Hip,BustLength,BustPoint,Neck,ArmHole,SleeveWidth,SleeveLength,PhoneNumber,DateCreated) values ('$CustomerName','$Shoulder','$SleeveDepth','$WaistLine','$HipLine','$BackWidth','$FrontWidth','$Bust','$Waist','$Hip','$BustLength','$BustPoint','$Neck','$ArmHole','$SleeveWidth','$SleeveLength','$PhoneNumber','$DateCreated')";
-
-        $query = mysqli_query($connect,$insert);
-        if ($query) {
-           echo "<script>alert('New Customer is successfully created! ')</script> ";
-        }
-        else 
-        {
-            echo "<script>alert('Something Went Wrong! Pls Try Again! ".$error."')</script> ";
-        };
+      session_start();
+   if (!isset($_SESSION['StaffID'])) {
+      echo "<script>window.alert('Please Login!')</script>";
+      echo "<script>window.location='login.php'</script>";
    }
     ?>
 
 </head>
 <body>
-    <!-- Nav -->
-    <nav>
-        <img src="images/logo.jpg">
-        <div>
-            <li><a href="">Profile</a></li>
-            <li><a href="">Manage</a></li>
-            <li><a href="">Home</a></li>
-        </div>
-    </nav>
-    <!-- end of nav -->
-    <!-- Sec -->
-    <section class="customer">
-      <form action="index.php" method="post" >
-        <h2 align="middle">Customer Entry</h2>
-        <p>Please fill in this form to create a customer.</p>
-        <hr>
-        <div class="container">
-            <label class="measurements"><b>Customer name</b></label>
-            <input type="text" name="txtCustomerName" style="width:100%; text-align:left;"placeholder="Enter customer name..." required>
-
-            <label class="measurements"><b>Shoulder</b></label>
-            <input type="text" minlength="2" maxlength="4" name="numShoulder" required>
-
-            <label class="measurements"><b>Sleeve Depth</b></label>
-            <input type="text" minlength="2" maxlength="4" name="numSleeveDepth" required>
-
-            <label class="measurements"><b>Waist Line</b></label>
-            <input type="text" minlength="2" maxlength="4" name="numWaistLine"  required>
-
-            <label class="measurements"><b>Hip Line</b></label>
-            <input type="text" minlength="2" maxlength="4" name="numHipLine" required>
-
-            <label class="measurements"><b>Back Width</b></label>
-            <input type="text" minlength="2" maxlength="4" name="numBackWidth"  required>
-
-            <label class="measurements"><b>Front Width</b></label>
-            <input type="text" minlength="2" maxlength="4" name="numFrontWidth"  required>
-
-            <label class="measurements"><b>Bust</b></label>
-            <input type="text" minlength="2" maxlength="4" name="numBust"  required>
-
-            <label class="measurements"><b>Waist</b></label>
-            <input type="text" minlength="2" maxlength="4" name="numWaist"  required>
-
-            <label class="measurements"><b>Hip</b></label>
-            <input type="text" minlength="2" maxlength="4" name="numHip"  required>
-
-            <label class="measurements"><b>Bust Length</b></label>
-            <input type="text" minlength="2" maxlength="4" name="numBustLength"  required>
-
-            <label class="measurements"><b>Bust Point</b></label>
-            <input type="text" minlength="2" maxlength="4" name="numBustPoint"  required>
-
-            <label class="measurements"><b>Neck</b></label>
-            <input type="text" minlength="2" maxlength="4" name="numNeck"  required>
-
-            <label class="measurements"><b>ArmHole</b></label>
-            <input type="text" minlength="2" maxlength="4" name="numArmHole"  required>
-
-            <label class="measurements"><b>SleeveWidth</b></label>
-            <input type="text" name="txtSleeveWidth"   required>
-
-            <label class="measurements"><b>SleeveLength</b></label>
-            <input type="text" name="numSleeveLength"  required>
-
-            <label class="measurements"><b>Phone Number</b></label>
-            <input type="text" name="txtPhoneNumber" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" minlength="8" maxlength="11"  placeholder="09**********" required>
-
-            <input type="submit" name="btncreate" class="btn" value="Submit">
-        </div>
-      </form>
-    </section>
+<?php 
+include('header.php');
+ ?>
 
 <script>
     $(document).ready(function () {
@@ -137,24 +42,27 @@
   $('.dataTables_length').addClass('bs-select');
 });
 </script>
-    <div class="app">
+    <div class="app" id="app">
         <div class="text-box">
-            <h3 style="padding-left: 1rem;">Customers list</h3>
+            <label class="h3" id="label">Customers list</label>
+            <button class="me-3 mb-3 btn-for-creating" onclick="location.href = './customer_entry.php';">New Customer</button>
         </div>
 
         <div class="list-box">
-        <table id="dtBasicExample" class="table table-bordered table-sm" cellspacing="0" width="98%">
+        <table id="dtBasicExample" class="table table-bordered table-sm" cellspacing="0" width="99%">
   <thead>
-    <tr>
-      <th class="th-sm">Name
+    <tr class="data-title">
+      <th class="th-m fs-ll">No
       </th>
-      <th class="th-sm">Bust
+      <th class="th-m fs-l name-column">Name
       </th>
-      <th class="th-sm">Waist
+      <th class="th-m fs-l data">Bust
       </th>
-      <th class="th-sm">Hip
+      <th class="th-m fs-l data">Waist
       </th>
-      <th class="th-sm">Action
+      <th class="th-m fs-l data">Hip
+      </th>
+      <th class="th-m fs-l">Action
       </th>
     </tr>
   </thead>
@@ -169,16 +77,21 @@
         for ($i=0; $i < $count; $i++) { 
           $row=mysqli_fetch_array($run); 
 ?>
-    <tr>
-      <td><?php echo $row['CustomerName'];?></td>
-      <td><?php echo $row['Bust'];?></td>
-      <td><?php echo $row['Waist'];?></td>
-      <td><?php echo $row['Hip'];?></td>
+    <tr class="data-result">
+      <td class="ps-3 fs-ll"><b><?php echo $i+1;?></b></td>
+      <td class="ps-3 fs-xl fw-500 name-column"><?php echo $row['CustomerName'];?></td>
+      <td class="ps-3 fs-ll data"><b><?php echo $row['Bust'];?></b></td>
+      <td class="ps-3 fs-ll data"><b><?php echo $row['Waist'];?></b></td>
+      <td class="ps-3 fs-ll data"><b><?php echo $row['Hip'];?></b></td>
       <td>
           <span>
-              <a href="customer.php?cusid=<?php echo  $row['CustomerID']; ?>" data-toggle="tooltip" data-placement="top" title="View">
+              <a href="customer.php?cusid=<?php echo  $row['CustomerID']; ?>" class="no-under" data-toggle="tooltip" data-placement="top" title="View">
                   <img src="images/eye.png" class="eye" >
               </a>
+          </span>
+          <span class="ms-2">
+          <a onclick="return confirm('Are you sure you want to delete this customer?')" href="customerdelete.php?cusid=<?php echo  $row['CustomerID']; ?>" class="no-under" data-toggle="tooltip" data-placement="top" title="Delete">
+                  <img src="images/delete.png" class="eye pointer" title="Delete">
           </span>
       </td>
 
@@ -190,20 +103,23 @@
     
     </tbody>
   <tfoot>
-    <tr>
-      <th>Name
+    <tr class="data-title">
+      <th class="fs-l">No
       </th>
-      <th>Bust
+      <th class="fs-l name-column">Name
       </th>
-      <th>Waist
+      <th class="fs-ll data">Bust
+      </th>
+      <th class="fs-l data">Waist
       </th=>
-      <th>Hip
+      <th class="fs-l data">Hip
       </th=>
-      <th>Action
+      <th class="fs-l">Action
       </th>
     </tr>
   </tfoot>
 </table>
+<div class="flex btn-container"><button class="phone-btn-for-creating" onclick="location.href = './customer_entry.php';">New Customer</button></div>
 
         </div>
     </div>
